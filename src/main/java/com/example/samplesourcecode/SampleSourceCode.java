@@ -6,8 +6,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.example.samplesourcecode.Listener.PlayerJoinEventListener;
 
 public class SampleSourceCode extends JavaPlugin{
-	/* おまじない */
-	public static Plugin plugin;
+	/* プラグインインスタンス */
+	private static Plugin plugin;
 
 	/**
 	 * プラグインの起動時に読み込まれるコード。
@@ -15,7 +15,7 @@ public class SampleSourceCode extends JavaPlugin{
 	 */
 	@Override
 	public void onEnable() {
-		/* おまじない。とりあえず上のと一緒に書いとく。*/
+		/* 呼び出し用インスタンスの設定 */
 		plugin = this;
 		/*
 		 * Configをフォルダに生成する。
@@ -24,7 +24,11 @@ public class SampleSourceCode extends JavaPlugin{
 		// saveDefaultConfig();
 
 		// イベントを登録する。これを忘れるとイベントが呼ばれない。
-		getServer().getPluginManager().registerEvents(new PlayerJoinEventListener(), plugin);
+		getServer().getPluginManager().registerEvents(new PlayerJoinEventListener(), this);
+	}
+
+	public static Plugin getPlugin(){
+		return plugin;
 	}
 
 }
