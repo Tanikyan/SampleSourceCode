@@ -1,0 +1,5 @@
+name: ${project.artifactId}
+version: ${project.version}
+main: com.example.samplesourcecode.SampleSourceCode
+author: Anonymous
+website: https://example.com
